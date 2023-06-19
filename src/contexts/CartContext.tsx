@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 // biblioteca para toasts
 import { toast } from 'react-toastify'
 
@@ -18,6 +19,7 @@ interface CartContextProps {
   snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
+  payOrder: () => void
 }
 
 interface CartProviderProps {
@@ -27,6 +29,7 @@ interface CartProviderProps {
 export const CartContext = createContext({} as CartContextProps)
 
 export function CartProvider({ children }: CartProviderProps) {
+  const navigate = useNavigate()
   const [cart, setCart] = useState<Snack[]>([])
 
   function addSnackIntoCart(snack: SnackData): void {
@@ -107,6 +110,10 @@ export function CartProvider({ children }: CartProviderProps) {
   }
 
   function confirmOrder() {
+    navigate('/payment')
+  }
+
+  function payOrder() {
     return
   }
 
@@ -119,6 +126,7 @@ export function CartProvider({ children }: CartProviderProps) {
         snackCartIncrement,
         snackCartDecrement,
         confirmOrder,
+        payOrder,
       }}
     >
       {children}

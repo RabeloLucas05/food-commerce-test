@@ -1,7 +1,8 @@
 import { darken } from 'polished'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Container = styled.footer`
+export const Container = styled.div`
   padding-top: 1.5rem;
 
   display: flex;
