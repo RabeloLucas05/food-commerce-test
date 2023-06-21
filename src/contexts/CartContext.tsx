@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { SnackData } from '../interfaces/SnackData'
 
 import { snackEmoji } from '../Helpers/snackEmoji'
+import { CustomerData } from '../interfaces/CustomerData'
 
 interface Snack extends SnackData {
   quantity: number
@@ -19,7 +20,7 @@ interface CartContextProps {
   snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
-  payOrder: () => void
+  payOrder: (customer: CustomerData) => void
 }
 
 interface CartProviderProps {
@@ -113,7 +114,8 @@ export function CartProvider({ children }: CartProviderProps) {
     navigate('/payment')
   }
 
-  function payOrder() {
+  function payOrder(customer: CustomerData) {
+    console.log('Pay order', cart ,customer)
     return
   }
 
